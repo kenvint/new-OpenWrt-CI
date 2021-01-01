@@ -46,15 +46,14 @@ jobs:
           sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler antlr3 gperf swig libtinfo5
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
-          ls
-
       - name: 涡轮增雕进程
         run: |
           #cd package
           mkdir openwrt-packages
           cd openwrt-packages
           git clone https://github.com/sirpdboy/luci-app-autopoweroff.git
-                
+
+
           # sudo mkdir -p -m 777 /mnt/openwrt/bin /mnt/openwrt/build_dir/host /mnt/openwrt/build_dir/hostpkg /mnt/openwrt/dl /mnt/openwrt/feeds /mnt/openwrt/staging_dir
           # ln -s /mnt/openwrt/bin ./bin
           # mkdir -p ./build_dir
@@ -65,22 +64,11 @@ jobs:
           # ln -s /mnt/openwrt/staging_dir ./staging_dir
 
           df -h
-          ls
 
       - name: Update feeds
         run: |
-          ls
-          ls
-          sed -i 's/^#\(.*helloworld\)/\1/' ./feeds.conf.default
-          sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' ./feeds.conf.default
-          sed -i '$a src-git small https://github.com/kenzok8/small' ./feeds.conf.default
-          sed -i '$a src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          ./scripts/feeds install -a
-          sed -i 's/192.168.1.1/10.10.10.50/g' ./package/base-files/files/bin/config_generate
-          sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' ./package/lean/luci-app-cpufreq/Makefile
-
 
       - name: Generate configuration file
         run: |
@@ -91,7 +79,7 @@ jobs:
           # 在 cat >> .config <<EOF 到 EOF 之间粘贴你的编译配置, 需注意缩进关系
           # 例如:
 
-          cat >> .config <<EOF          
+          cat >> .config <<EOF
           #
           # Automatically generated file; DO NOT EDIT.
           # OpenWrt Configuration
@@ -5002,7 +4990,6 @@ jobs:
           CONFIG_PACKAGE_luci-theme-material=y
           CONFIG_PACKAGE_luci-theme-netgear=m
           CONFIG_PACKAGE_luci-theme-rosy=y
-          CONFIG_PACKAGE_luci-theme-infinityfreedom=y
           # end of 4. Themes
 
           #
