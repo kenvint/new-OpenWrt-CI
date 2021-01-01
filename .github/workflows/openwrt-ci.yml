@@ -67,15 +67,15 @@ jobs:
 
       - name: Update feeds
         run: |
-          sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-          sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-          sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-          sed -i '$a src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git' feeds.conf.default
+          sed -i 's/^#\(.*helloworld\)/\1/' ./feeds.conf.default
+          sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' ./feeds.conf.default
+          sed -i '$a src-git small https://github.com/kenzok8/small' ./feeds.conf.default
+          sed -i '$a src-git infinityfreedom https://github.com/xiaoqingfengATGH/luci-theme-infinityfreedom.git' ./feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           ./scripts/feeds install -a
-          sed -i 's/192.168.1.1/10.10.10.50/g' package/base-files/files/bin/config_generate
-          sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
+          sed -i 's/192.168.1.1/10.10.10.50/g' ./package/base-files/files/bin/config_generate
+          sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' ./package/lean/luci-app-cpufreq/Makefile
 
 
       - name: Generate configuration file
