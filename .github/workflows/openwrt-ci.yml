@@ -51,15 +51,24 @@ jobs:
           df -h
           cd /home
           ls
-          cd /runner
+          cd /
+          cd /home/runner
           ls
-          cd /work
+          cd /
+          cd /home/runner/work
           ls
-          cd /new-OpenWrt-CI
+          cd /
+          cd /home/runner/new-OpenWrt-CI
           ls
           cd /
           ls
           cd /home/runner/work/_temp
+          ls
+          cd /
+          cd /mnt
+          ls
+          cd /
+          cd /mnt/openwrt
           ls
           mkdir openwrt-packages
           cd openwrt-packages
