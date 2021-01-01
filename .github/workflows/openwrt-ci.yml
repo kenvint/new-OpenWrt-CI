@@ -58,7 +58,7 @@ jobs:
           cd /home/runner/work
           ls
           cd /
-          cd /home/runner/new-OpenWrt-CI
+          cd /home/runner/work/new-OpenWrt-CI
           ls
           cd /
           ls
