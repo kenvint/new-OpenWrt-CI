@@ -48,7 +48,10 @@ jobs:
           sudo -E apt-get clean
       - name: 涡轮增雕进程
         run: |
-          #cd package
+          cd /home/runner/work
+          ls
+          cd /home/runner/work/openwrt
+          ls
           mkdir openwrt-packages
           cd openwrt-packages
           git clone https://github.com/sirpdboy/luci-app-autopoweroff.git
