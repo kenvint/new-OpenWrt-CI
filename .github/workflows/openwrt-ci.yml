@@ -49,9 +49,17 @@ jobs:
       - name: 涡轮增雕进程
         run: |
           df -h
-          cd /home/runner/work/new-OpenWrt-CI
+          cd /home
           ls
-          #cd /home/runner/work/openwrt
+          cd /runner
+          ls
+          cd /work
+          ls
+          cd /new-OpenWrt-CI
+          ls
+          cd /
+          ls
+          cd /home/runner/work/_temp
           ls
           mkdir openwrt-packages
           cd openwrt-packages
