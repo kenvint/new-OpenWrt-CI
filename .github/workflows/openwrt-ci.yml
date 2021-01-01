@@ -9,14 +9,25 @@
 
 name: OpenWrt-CI
 
-on:
-  push:
-    branches: 
-      - master
+#on:
+#  push:
+#    branches: 
+#      - master
   # schedule:
   #   - cron: 0 20 * * *
-  release:
-    types: [published]
+#  release:
+#    types: [published]
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+#  schedule:
+#    - cron: 0 8 * * 5
 
 jobs:
 
@@ -49,7 +60,7 @@ jobs:
 
       - name: 涡轮增雕进程
         run: |
-          cd package
+          #cd package
           mkdir openwrt-packages
           cd openwrt-packages
           git clone https://github.com/sirpdboy/luci-app-autopoweroff.git
